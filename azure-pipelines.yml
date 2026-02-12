@@ -1,0 +1,39 @@
+trigger:
+  - main
+  - feature/*
+
+pool:
+  vmImage: "windows-latest"
+
+variables:
+  imageName: "devopsapp"
+
+stages:
+  - stage: Build
+    displayName: "Build Docker image and run tests"
+    jobs:
+      - job: BuildAndTest
+        displayName: "Build & Test Job"
+        steps:
+          - task: UseDotNet@2
+            displayName: "Install .NET SDK"
+            inputs:
+              packageType: "sdk"
+              version: "9.x"
+
+          - script: |
+              echo "## Building Docker image"
+              docker build -t $(imageName):$(Build.BuildId) .
+            displayName: "Docker Build"
+
+          - script: |
+              echo "## Running tests"
+              dotnet test --logger "trx;LogFileName=test_results.trx"
+            displayName: "Run Unit Tests"
+
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFiles: "**/test_results.trx"
+              testResultsFormat: "VSTest"
+              failTaskOnFailedTests: true
+            displayName: "Publish Test Results"
