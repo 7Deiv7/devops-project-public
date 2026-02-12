@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "BuGwdAzl1e0t4dN2BkL0ePoZTvNfyp9dg8TAglmcdEE=",
+  "Source": "DevopsApp",
+  "BasePath": "_content/DevopsApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
