@@ -3,7 +3,7 @@ trigger:
   - feature/*
 
 pool:
-  vmImage: "windows-latest"
+  name: "Default" # pool: (potem następna linijka) vmImage: "windows-latest"
 
 variables:
   imageName: "devopsapp"
