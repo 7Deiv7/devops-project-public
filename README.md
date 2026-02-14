@@ -19,12 +19,11 @@ PowerShell (Windows) lub terminal (Linux/Mac)
 Uruchomienie lokalnie
 docker build -t devopsapp:latest .
 docker run -d -p 5055:80 --name devopsapp-container devopsapp:latest
+
 Sprawdz w przegladarce:
-http://localhost:5055/
-http://localhost:5055/products
+http://localhost:5055/ 
+http://localhost:5055/products 
 
 Testy jednostkowe
 Uruchom testy poleceniem:
-
 dotnet test ./DevopsApp.Tests/DevopsApp.Tests.csproj --logger "trx;LogFileName=test_results.trx"
-
